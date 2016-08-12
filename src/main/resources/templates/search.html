@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Hibernate Search</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<p th:if="${!searchResults.isEmpty()}">
+	<ol>
+		<li th:each="user : ${searchResults}"><b><span
+				th:text="${user.name}"></span></b> - <span th:text="${user.city}"></span>
+			- <span th:text="${user.email}"></span></li>
+	</ol>
+	</p>
+
+	<p th:if="${searchResults.isEmpty()}">
+		<strong>No results, try queries:</strong>:
+	<ul>
+		<li><a href='/search?q=yeari:[2 TO 1999]'>yeari:[2 TO 1999]</a></li>
+		<li><a href='/search?q=yeari:[3 TO 1999] AND name:AMY'>yeari:[3
+				TO 1999] AND name:AMY</a></li>
+		<li><a href='/search?q=birthDay:[201608091002 TO 20160810]'>birthDay:[201608091002
+				TO 20160810]</a></li>
+	</ul>
+	</p>
+
+	<br />
+	
+</body>
+
+</html>
