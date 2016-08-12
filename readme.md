@@ -35,10 +35,10 @@ Import as *Existing Maven Project* and run it as *Spring Boot App*.
 
 - Run the application
 - Type the url:
- `http://localhost:8080/search?q=group.name:Grupa%20AND%20name:amy`	
- `http://localhost:8080/search?q=group.altName:alt` 
- `http://localhost:8080/search?q=group.name:Grupa` 
- `http://localhost:8080/search?q=amy`  
+	- `http://localhost:8080/search?q=group.name:Grupa%20AND%20name:amy`	
+	- `http://localhost:8080/search?q=group.altName:alt` 
+	- `http://localhost:8080/search?q=group.name:Grupa` 
+	- `http://localhost:8080/search?q=amy`  
 			   
 
   
