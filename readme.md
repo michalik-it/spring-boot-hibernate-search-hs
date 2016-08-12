@@ -2,9 +2,9 @@
 
 Project based on: http://blog.netgloo.com/2014/11/23/spring-boot-and-hibernate-search-integration/
 Additionally:
-- lucene query parser allows search query like 'group.name:Grupa%20AND%20name:amy'
-- related entities
-- lecene query tests
+- lucene query parser allows search query like `group.name:Grupa AND name:amy`
+- related entities: Groups (one-to-many), Projectds (many-to-many)
+- lecene query tests: SearchTests
 
 ### Build and run
 
@@ -35,10 +35,10 @@ Import as *Existing Maven Project* and run it as *Spring Boot App*.
 
 - Run the application
 - Type the url:
-`http://localhost:8080/search?q=group.name:Grupa%20AND%20name:amy`	//users by group name and user name
-`http://localhost:8080/search?q=group.altName:alt` //user by ale grup name
-`http://localhost:8080/search?q=group.name:Grupa` //users by group name
-`http://localhost:8080/search?q=amy`  //default by name
+ `http://localhost:8080/search?q=group.name:Grupa%20AND%20name:amy`	
+ `http://localhost:8080/search?q=group.altName:alt` 
+ `http://localhost:8080/search?q=group.name:Grupa` 
+ `http://localhost:8080/search?q=amy`  
 			   
 
   
