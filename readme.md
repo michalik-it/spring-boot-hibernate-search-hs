@@ -1,6 +1,10 @@
 ## Spring Boot and Hibernate Search integration
 
-See here for more informations: http://blog.netgloo.com/2014/11/23/spring-boot-and-hibernate-search-integration/
+Project based on: http://blog.netgloo.com/2014/11/23/spring-boot-and-hibernate-search-integration/
+Additionally:
+- lucene query parser allows search query like 'group.name:Grupa%20AND%20name:amy'
+- related entities
+- lecene query tests
 
 ### Build and run
 
