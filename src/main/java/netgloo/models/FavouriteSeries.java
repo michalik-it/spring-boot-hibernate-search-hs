@@ -5,6 +5,7 @@ import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 @DiscriminatorValue(value = "SERIES")
@@ -22,6 +23,7 @@ public class FavouriteSeries extends Favourite {
         this.title = title;
     }
 
-        
+    
+ 
     
 }

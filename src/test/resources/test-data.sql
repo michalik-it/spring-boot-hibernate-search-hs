@@ -20,5 +20,8 @@ insert into users_projects(id, user_id, project_id) values (5,5,1);
 insert into users_projects(id, user_id, project_id) values (2,1,2);
 insert into users_projects(id, user_id, project_id) values (3,2,3);
 
-INSERT INTO favourite (`type`, id, title, name, user_id) VALUES('PERSON', 1, NULL, 'Kamil', 1);
-INSERT INTO favourite (`type`, id, title, name, user_id) VALUES('SERIES', 2, 'Breaking Bad', NULL, 1);
+INSERT INTO favourite (`type`, id, user_id) VALUES('PERSON', 1, 1);
+INSERT INTO favourite (`type`, id, user_id) VALUES('SERIES', 2, 1);
+
+INSERT INTO favourite_person (id, name) VALUES(1,'Kamil');
+INSERT INTO favourite_series (id, title) VALUES(2, 'Breaking Bad');

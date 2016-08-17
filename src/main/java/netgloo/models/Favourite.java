@@ -8,23 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "favourite")
 @DiscriminatorColumn(name = "type")
 @Indexed
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class Favourite {
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class Favourite {
 
     @Id
     @GeneratedValue
     private Integer id;
     
-//    @ManyToOne
-//    private User user;
-
     public Integer getId() {
         return id;
     }
@@ -33,13 +29,12 @@ public class Favourite {
         this.id = id;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+//    SOLUTION 1
+    
+//    @Field
+//    public abstract String getName();
 //    
+//    public abstract void setName(String name);
+
     
 }

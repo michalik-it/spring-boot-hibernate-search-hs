@@ -10,9 +10,13 @@ import org.hibernate.search.annotations.NumericField;
 import org.hibernate.search.annotations.Parameter;
 import org.hibernate.search.annotations.Store;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,12 +25,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Indexed
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,15 +78,29 @@ public class User {
     @JoinColumn(name="user_id")
     private List<Favourite> favourites;
     
-//    @OneToMany(targetEntity=FavouritePerson.class)
-//    @IndexedEmbedded
-//    @JoinColumn(name="user_id")
-//    private List<FavouritePerson> favourites;
     
-//    @OneToMany(targetEntity=FavouriteSeries.class)
-//    @IndexedEmbedded
-//    @JoinColumn(name="user_id")
-//    private List<FavouriteSeries> favourites;
+    @IndexedEmbedded
+    private List<FavouritePerson> getFavouritePersons() {
+        List<FavouritePerson> fps = new ArrayList<FavouritePerson>();
+        for ( Favourite f : favourites) {
+            if(f instanceof FavouritePerson) {
+                fps.add((FavouritePerson)f);
+            }
+        }
+        return fps;
+    }
+    
+    @IndexedEmbedded
+    private List<FavouriteSeries> getFavouriteSeries() {
+        List<FavouriteSeries> fps = new ArrayList<FavouriteSeries>();
+        for ( Favourite f : favourites) {
+            if(f instanceof FavouriteSeries) {
+                fps.add((FavouriteSeries)f);
+            }
+        }
+        return fps;
+    }
+  
 
     public User() {}
 
@@ -165,5 +189,9 @@ public class User {
     public void setUserProject(List<UserProject> userProject) {
         this.userProject = userProject;
     }
+
+
+    
+    
 
 } 
