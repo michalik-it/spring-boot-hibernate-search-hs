@@ -17,6 +17,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -61,6 +62,21 @@ public class User {
     @OneToMany(mappedBy="users")
     @IndexedEmbedded
     private List<UserProject> userProject;
+    
+    @OneToMany(targetEntity=Favourite.class)
+    @IndexedEmbedded
+    @JoinColumn(name="user_id")
+    private List<Favourite> favourites;
+    
+//    @OneToMany(targetEntity=FavouritePerson.class)
+//    @IndexedEmbedded
+//    @JoinColumn(name="user_id")
+//    private List<FavouritePerson> favourites;
+    
+//    @OneToMany(targetEntity=FavouriteSeries.class)
+//    @IndexedEmbedded
+//    @JoinColumn(name="user_id")
+//    private List<FavouriteSeries> favourites;
 
     public User() {}
 

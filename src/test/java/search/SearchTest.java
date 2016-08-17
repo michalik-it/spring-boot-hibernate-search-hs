@@ -160,6 +160,58 @@ public class SearchTest {
         List<User> results = searchService.search(text);
         assertTrue(results.size() == 4);
     }
+    
+    @Test
+    public void testFavourites() throws ParseException {
+
+        String text = "favourites.id:1";
+
+        List<User> results = searchService.search(text);
+        assertTrue(results.size() == 1);
+    }
+    
+    @Test
+    public void testNameFailFavouritePerson() throws ParseException {
+
+        //TODO: fails !!!!
+        String text = "favourites.name:kamil";
+
+        List<User> results = searchService.search(text);
+        assertTrue(results.size() == 1);
+    }
+
+    @Test
+    public void testNameFailFavouriteSeries() throws ParseException {
+
+        //TODO: fails !!!!
+        String text = "favourites.title:Breaking Bad";
+
+        List<User> results = searchService.search(text);
+        assertTrue(results.size() == 1);
+    }
+
+    
+    @Test
+    public void testNameOkFavourites() throws ParseException {
+
+        String text = "title:Breaking Bad";
+
+        List<User> results = searchService.search(text);
+        assertTrue(results.size() == 1);
+    }
+    
+    @Test
+    public void testNameOkFavouritesHQ() throws ParseException {
+
+        QueryBuilder b = searchService.getFullTextEntityManager().getSearchFactory()
+                .buildQueryBuilder().forEntity(User.class).get();
+
+        Query luceneQuery =
+                b.keyword().onField("favourites.title").ignoreFieldBridge().matching("Breaking Bad").createQuery();
+
+        List<User> results = searchService.search(luceneQuery);
+        assertTrue(results.size() == 1);
+    }
 
 
     //using QueryBuilder
